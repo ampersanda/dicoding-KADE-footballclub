@@ -1,6 +1,5 @@
 package com.ampersanda.footballclub
 
-//import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -21,11 +20,12 @@ class MainActivity : AppCompatActivity() {
     private fun initData() {
         val logos = resources.obtainTypedArray(R.array.clubs_logo)
         val names = resources.getStringArray(R.array.clubs_name)
+        val descriptions = resources.getStringArray(R.array.clubs_description)
 
         listOfFootballClub.clear()
 
         for (index in names.indices){
-            listOfFootballClub.add(FootballClub(names[index], logos.getResourceId(index, 0)))
+            listOfFootballClub.add(FootballClub(names[index], logos.getResourceId(index, 0), descriptions[index]))
         }
 
         logos.recycle()
@@ -41,7 +41,9 @@ class MainActivity : AppCompatActivity() {
                 recyclerView {
                     lparams(matchParent, matchParent)
                     layoutManager = LinearLayoutManager(context)
-                    adapter = FootballRecyclerAdapter(listOfFootballClub)
+                    adapter = FootballRecyclerAdapter(listOfFootballClub) {
+                        footballClub -> toast(footballClub.description)
+                    }
                 }
             }
         }

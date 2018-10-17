@@ -3,10 +3,11 @@ package com.ampersanda.footballclub
 import android.os.Parcel
 import android.os.Parcelable
 
-data class FootballClub(val name : String, val image : Int) : Parcelable {
+data class FootballClub(val name : String, val image : Int, val description : String) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
-            parcel.readInt())
+            parcel.readInt(),
+            parcel.readString())
 
     override fun writeToParcel(p0: Parcel?, p1: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

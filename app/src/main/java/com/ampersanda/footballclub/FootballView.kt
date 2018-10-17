@@ -2,9 +2,7 @@ package com.ampersanda.footballclub
 
 import android.view.Gravity
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.marginLeft
 import org.jetbrains.anko.*
 
 class FootballView : AnkoComponent<ViewGroup>{
