@@ -11,6 +11,10 @@ class MainActivity : AppCompatActivity() {
 
     private var listOfFootballClub : MutableList<FootballClub> = mutableListOf()
 
+    companion object {
+        const val clubKey : String = "club"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initData()
@@ -24,9 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         listOfFootballClub.clear()
 
-        for (index in names.indices){
-            listOfFootballClub.add(FootballClub(names[index], logos.getResourceId(index, 0), descriptions[index]))
-        }
+        for (index in names.indices) listOfFootballClub.add(FootballClub(names[index], logos.getResourceId(index, 0), descriptions[index]))
 
         logos.recycle()
     }
@@ -36,13 +38,12 @@ class MainActivity : AppCompatActivity() {
         override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
             verticalLayout{
                 lparams(matchParent, matchParent)
-                orientation = LinearLayout.VERTICAL
 
                 recyclerView {
                     lparams(matchParent, matchParent)
                     layoutManager = LinearLayoutManager(context)
                     adapter = FootballRecyclerAdapter(listOfFootballClub) {
-                        footballClub -> toast(footballClub.description)
+                        footballClub -> startActivity<DetailActivity>(clubKey to footballClub)
                     }
                 }
             }

@@ -23,12 +23,12 @@ class FootballView : AnkoComponent<ViewGroup>{
 
             imageView {
                 id = clubLogoId
-            }.lparams(width = dip(64), height = dip(64))
+            }.lparams(dip(64), dip(64))
 
             textView {
                 id = clubNameId
                 textSize = 16f
-            }.lparams(width = matchParent, height = wrapContent){
+            }.lparams(matchParent, wrapContent){
                 marginStart = dip(16)
             }
         }

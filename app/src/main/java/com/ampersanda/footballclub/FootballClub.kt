@@ -3,27 +3,26 @@ package com.ampersanda.footballclub
 import android.os.Parcel
 import android.os.Parcelable
 
-data class FootballClub(val name : String, val image : Int, val description : String) : Parcelable {
-    constructor(parcel: Parcel) : this(
-            parcel.readString(),
-            parcel.readInt(),
-            parcel.readString())
+data class FootballClub(val name: String, val image: Int, val description: String) : Parcelable {
+    constructor(source: Parcel) : this(
+            source.readString(),
+            source.readInt(),
+            source.readString()
+    )
 
-    override fun writeToParcel(p0: Parcel?, p1: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun describeContents() = 0
+
+    override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
+        writeString(name)
+        writeInt(image)
+        writeString(description)
     }
 
-    override fun describeContents(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    companion object CREATOR : Parcelable.Creator<FootballClub> {
-        override fun createFromParcel(parcel: Parcel): FootballClub {
-            return FootballClub(parcel)
-        }
-
-        override fun newArray(size: Int): Array<FootballClub?> {
-            return arrayOfNulls(size)
+    companion object {
+        @JvmField
+        val CREATOR: Parcelable.Creator<FootballClub> = object : Parcelable.Creator<FootballClub> {
+            override fun createFromParcel(source: Parcel): FootballClub = FootballClub(source)
+            override fun newArray(size: Int): Array<FootballClub?> = arrayOfNulls(size)
         }
     }
 }
