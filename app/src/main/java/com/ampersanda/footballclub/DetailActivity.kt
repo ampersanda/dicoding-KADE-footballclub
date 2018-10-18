@@ -1,10 +1,9 @@
 package com.ampersanda.footballclub
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
 import android.view.MenuItem
-import androidx.core.view.marginTop
+import androidx.appcompat.app.AppCompatActivity
 import org.jetbrains.anko.*
 
 class DetailActivity : AppCompatActivity() {

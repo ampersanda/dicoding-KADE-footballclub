@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.AnkoContext
 
-class FootballRecyclerAdapter(var listOfFootballClub : MutableList<FootballClub>, var listener : (FootballClub) -> Unit) : RecyclerView.Adapter<FootballRecyclerAdapter.ViewHolder>() {
+class FootballRecyclerAdapter(private var listOfFootballClub : MutableList<FootballClub>, var listener : (FootballClub) -> Unit) : RecyclerView.Adapter<FootballRecyclerAdapter.ViewHolder>() {
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         private val imgClubLogo : ImageView = itemView.findViewById(FootballView.clubLogoId)
         private val textClubName : TextView = itemView.findViewById(FootballView.clubNameId)
